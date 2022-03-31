@@ -37,7 +37,7 @@ class Main:
             if major > latest_major:
                 latest_major = major
 
-        major_prefix = "SAPGUI " + str(major) + "."
+        major_prefix = f"SAPGUI { str(major) }."
         deletable_indices = []
         index = -1
         for subfolder in subfolders:
@@ -61,7 +61,7 @@ class Main:
             if minor > latest_minor:
                 latest_minor = minor
 
-        minor_prefix = major_prefix + str(latest_minor)
+        minor_prefix = f"{major_prefix}{str(latest_minor)}"
         deletable_indices = []
         index = -1
         for subfolder in subfolders:
@@ -90,7 +90,7 @@ class Main:
         if latest_rev == 0:
             rev_prefix = minor_prefix
         else:
-            rev_prefix = minor_prefix + "rev" + str(latest_rev)
+            rev_prefix = f"{minor_prefix}rev{str(latest_rev)}"
 
         deletable_indices = []
         index = -1
@@ -113,8 +113,8 @@ class Main:
                 return
 
     def _launch_latest_app(self):
-        cmd = "\"" + self._latest_app + "\""
-        os.system("open " + cmd)
+        cmd = f'"{ self._latest_app }"'
+        os.system(f"open {cmd}")
 
     @staticmethod
     def _get_deepest_dir(dir: str) -> str:
